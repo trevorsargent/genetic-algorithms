@@ -4,20 +4,24 @@
 import 'reset-css/reset.css'
 
 // main style file
-import './style.css'
+// import './style.css'
+import p5 from 'p5'
 
-function component() {
-  var element = document.createElement('h1')
+const sketch = (p) => {
+  const background = 255
+  const cW = p.windowWidth
+  const cH = p.windowHeight
 
-  var days = ['Sunday','Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+  p.setup = function () {
+    p.createCanvas(cW, cH)
+  }
 
-  let string = "It's "
-  string += days[new Date().getDay()]
-  string += " – Get. Shit. Done!"
+  p.draw = function () {
+    p.background(background)
+  }
 
-  element.innerHTML = string
-
-  return element
+  p.mousePressed = function () {}
 }
 
-document.body.appendChild(component())
+// See https://github.com/processing/p5.js/wiki/Instantiation-Cases
+new p5(sketch) // 2nd param can be a canvas html element
